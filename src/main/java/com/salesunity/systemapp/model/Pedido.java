@@ -1,19 +1,23 @@
 package com.salesunity.systemapp.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pedido_id",nullable = false)
-    private Long id;
+    private UUID id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fornecedor_empresa_id",referencedColumnName = "empresa_id")
