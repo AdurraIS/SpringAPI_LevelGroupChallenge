@@ -1,9 +1,6 @@
 package com.salesunity.systemapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -11,6 +8,9 @@ import lombok.Data;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoria_id",nullable = false)
     private Long id;
+
+    @Column(name = "categoria_name",nullable = false)
     private String name;
 }

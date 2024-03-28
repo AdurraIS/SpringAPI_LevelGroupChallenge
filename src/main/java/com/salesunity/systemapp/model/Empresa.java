@@ -1,0 +1,38 @@
+package com.salesunity.systemapp.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.List;
+
+@Entity
+@Data
+public class Empresa {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "empresa_id",nullable = false)
+    private Long id;
+
+    @Column(name = "empresa_name", nullable = false)
+    private String name;
+
+    @Column(name = "empresa_cnpj", nullable = false)
+    private String cnpj;
+
+    @Column(name = "empresa_type", nullable = false)
+    private int type;
+
+    @Column(name = "empresa_email",nullable = false)
+    private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<Produto> produtos;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<Usuario> usuarios;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fornecedor", cascade = CascadeType.ALL)
+    private List<Pedido> vendas;
+
+}
