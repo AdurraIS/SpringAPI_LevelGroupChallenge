@@ -6,13 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
 public class PedidoDTO {
 
-    private UUID id;
+    private Long id;
 
     private Long fornecedor;
 
