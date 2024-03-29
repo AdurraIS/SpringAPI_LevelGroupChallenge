@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
@@ -29,7 +28,7 @@ public class EmpresaDTO {
 
     private List<Long> usuarios;
 
-    private List<UUID> vendas;
+    private List<Long> vendas;
 
     public EmpresaDTO(Empresa empresa) {
         this.id = empresa.getId();

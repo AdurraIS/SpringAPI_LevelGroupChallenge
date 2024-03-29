@@ -31,7 +31,4 @@ public class Item {
     @JoinColumn(name = "fk_pedido_id",referencedColumnName = "pedido_id")
     private Pedido pedido;
 
-    /*Item DTO Constructor
-        valorTotal = itemDTO.produto * itemDTO.quantidade;
-     */
 }
