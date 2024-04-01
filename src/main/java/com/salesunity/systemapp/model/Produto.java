@@ -31,6 +31,6 @@ public class Produto {
     private TipoProduto productType;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "empresa_id")
+    @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
 }
