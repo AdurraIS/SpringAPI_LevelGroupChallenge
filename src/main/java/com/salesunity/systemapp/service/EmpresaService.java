@@ -34,7 +34,7 @@ public class EmpresaService {
         return empresaRepository.findAll(pageable).map(EmpresaDTO::new);
     }
     public EmpresaDTO findById(Long id){
-        return empresaRepository.findById(id).map(EmpresaDTO::new).orElseThrow();
+        return new EmpresaDTO(empresaRepository.findById(id).orElseThrow());
 
     }
     public EmpresaDTO saveEmpresa(EmpresaDTO empresaDTO){
