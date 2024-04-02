@@ -31,6 +31,10 @@ public class ItemService {
         this.findById(id);
         itemRepository.deleteById(id);
     }
+    public void updateItem(ItemDTO newItemDTO){
+        findById(newItemDTO.getId());
+        itemRepository.save(dtoToObject(newItemDTO));
+    }
     public Item dtoToObject(ItemDTO itemDTO){
         Item item = new Item();
         item.setId(itemDTO.getId());

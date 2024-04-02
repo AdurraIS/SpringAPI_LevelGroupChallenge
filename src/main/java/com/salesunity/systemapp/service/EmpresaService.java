@@ -1,6 +1,7 @@
 package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.EmpresaDTO;
+import com.salesunity.systemapp.dto.ItemDTO;
 import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
@@ -43,6 +44,10 @@ public class EmpresaService {
     public void deleteEmpresa(Long id){
         EmpresaDTO empresaDTO = this.findById(id);
         empresaRepository.deleteById(id);
+    }
+    public void updateEmpresa(EmpresaDTO newEmpresaDTO){
+        findById(newEmpresaDTO.getId());
+        empresaRepository.save(dtoToObject(newEmpresaDTO));
     }
     public Empresa dtoToObject(EmpresaDTO empresaDTO){
         Empresa empresa = new Empresa();

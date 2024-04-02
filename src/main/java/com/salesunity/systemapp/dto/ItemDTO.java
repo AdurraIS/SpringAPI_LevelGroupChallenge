@@ -22,7 +22,8 @@ public class ItemDTO {
         this.id = item.getId();
         this.produto_id = item.getProduto().getId();
         this.quantidade = item.getQuantidade();
-        this.valorTotal = item.getQuantidade() * item.getProduto().getPrice();
+        this.valorTotal = item.getValorTotal();
         this.pedido_id = item.getPedido().getId();
     }
+
 }
