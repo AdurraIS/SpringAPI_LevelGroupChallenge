@@ -13,6 +13,8 @@ public class PedidoDTO {
 
     private Long id;
 
+    private Boolean concluido;
+
     private Long fornecedor;
 
     private Long comprador;
@@ -24,5 +26,6 @@ public class PedidoDTO {
         this.fornecedor = pedido.getFornecedor().getId();
         this.comprador = pedido.getComprador().getId();
         this.items = pedido.getItems().stream().map(Item::getId).toList();
+        this.concluido = pedido.getConcluido();
     }
 }

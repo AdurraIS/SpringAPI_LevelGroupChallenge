@@ -17,6 +17,9 @@ public class Pedido {
     @Column(name = "pedido_id",nullable = false)
     private Long id;
 
+    @Column(name = "pedido_concluido",nullable = false)
+    private Boolean concluido;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fornecedor_empresa_id",referencedColumnName = "empresa_id")
     private Empresa fornecedor;
