@@ -36,8 +36,16 @@ public class EmpresaDTO {
         this.cnpj = empresa.getCnpj();
         this.type = empresa.getType();
         this.email = empresa.getEmail();
-        this.produtos = empresa.getProdutos().stream().map(Produto::getId).toList();
-        this.usuarios = empresa.getUsuarios().stream().map(Usuario::getId).toList();
-        this.vendas = empresa.getVendas().stream().map(Pedido::getId).toList();
+        if(empresa.getVendas() != null){
+            this.vendas = empresa.getVendas().stream().map(Pedido::getId).toList();
+        }
+        if(empresa.getProdutos() != null){
+            this.produtos = empresa.getProdutos().stream().map(Produto::getId).toList();
+        }
+        if(empresa.getUsuarios() != null){
+            this.usuarios = empresa.getUsuarios().stream().map(Usuario::getId).toList();
+        }
+
+
     }
 }
