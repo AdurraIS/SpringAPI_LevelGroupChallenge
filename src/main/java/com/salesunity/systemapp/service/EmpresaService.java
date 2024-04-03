@@ -51,14 +51,19 @@ public class EmpresaService {
     }
     public Empresa dtoToObject(EmpresaDTO empresaDTO){
         Empresa empresa = new Empresa();
-        empresa.setId(empresaDTO.getId());
+        empresa.setName(empresaDTO.getName());
         empresa.setCnpj(empresaDTO.getCnpj());
         empresa.setType(empresaDTO.getType());
         empresa.setEmail(empresaDTO.getEmail());
-        empresa.setProdutos(produtoRepository.findAllById(empresaDTO.getProdutos()));
-        empresa.setUsuarios(usuarioRepository.findAllById(empresaDTO.getUsuarios()));
-        empresa.setVendas(pedidoRepository.findAllById(empresaDTO.getVendas()));
-
+        if(empresaDTO.getProdutos() != null){
+            empresa.setProdutos(produtoRepository.findAllById(empresaDTO.getProdutos()));
+        }
+        if(empresaDTO.getVendas() != null){
+            empresa.setUsuarios(usuarioRepository.findAllById(empresaDTO.getUsuarios()));
+        }
+        if(empresaDTO.getUsuarios() != null){
+            empresa.setVendas(pedidoRepository.findAllById(empresaDTO.getVendas()));
+        }
         return empresa;
     }
 

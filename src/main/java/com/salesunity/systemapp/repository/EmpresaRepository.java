@@ -4,8 +4,8 @@ import com.salesunity.systemapp.model.Empresa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
 
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
