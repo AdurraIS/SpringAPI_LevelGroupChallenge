@@ -42,7 +42,7 @@ public class EmpresaService {
         return new EmpresaDTO(empresaRepository.save(dtoToObject(empresaDTO)));
     }
     public void deleteEmpresa(Long id){
-        EmpresaDTO empresaDTO = this.findById(id);
+        this.findById(id);
         empresaRepository.deleteById(id);
     }
     public void updateEmpresa(EmpresaDTO newEmpresaDTO){
