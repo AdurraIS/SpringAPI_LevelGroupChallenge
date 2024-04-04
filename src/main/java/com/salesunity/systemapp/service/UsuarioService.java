@@ -53,8 +53,9 @@ public class UsuarioService {
         usuario.setSenha(usuarioDTO.getSenha());
         usuario.setEmail(usuarioDTO.getEmail());
         usuario.setEmpresa(empresaRepository.findById(usuarioDTO.getEmpresa_id()).orElseThrow());
-        usuario.setCompras(pedidoRepository.findAllById(usuarioDTO.getCompras_id()));
-
+        if(usuarioDTO.getCompras_id() != null){
+            usuario.setCompras(pedidoRepository.findAllById(usuarioDTO.getCompras_id()));
+        }
         return usuario;
     }
 

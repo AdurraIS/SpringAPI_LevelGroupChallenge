@@ -25,7 +25,9 @@ public class PedidoDTO {
         this.id = pedido.getId();
         this.fornecedor = pedido.getFornecedor().getId();
         this.comprador = pedido.getComprador().getId();
-        this.items = pedido.getItems().stream().map(Item::getId).toList();
+        if(pedido.getItems() != null){
+            this.items = pedido.getItems().stream().map(Item::getId).toList();
+        }
         this.concluido = pedido.getConcluido();
     }
 }

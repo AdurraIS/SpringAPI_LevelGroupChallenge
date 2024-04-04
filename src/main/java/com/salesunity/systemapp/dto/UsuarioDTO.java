@@ -33,6 +33,9 @@ public class UsuarioDTO {
         this.senha = usuario.getSenha();
         this.admin = usuario.isAdmin();
         this.empresa_id = usuario.getEmpresa().getId();
-        this.compras_id = usuario.getCompras().stream().map(Pedido::getId).toList();
+        if(usuario.getCompras() != null){
+            this.compras_id = usuario.getCompras().stream().map(Pedido::getId).toList();
+        }
+
     }
 }
