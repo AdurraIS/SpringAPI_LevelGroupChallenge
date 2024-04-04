@@ -27,7 +27,7 @@ public class ItemService {
     public ItemDTO saveItem(ItemDTO itemDTO){
         return new ItemDTO(itemRepository.save(dtoToObject(itemDTO)));
     }
-    public void deleteItemById(Long id){
+    public void deleteItem(Long id){
         this.findById(id);
         itemRepository.deleteById(id);
     }
