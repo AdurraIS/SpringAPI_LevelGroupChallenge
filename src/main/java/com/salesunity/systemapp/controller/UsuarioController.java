@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/api/v1/usuarios")
 public class UsuarioController {
@@ -26,6 +28,10 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO> getUsuarioById(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.findById(id));
+    }
+    @GetMapping("/empresa/{id}")
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuarioByEmpresa(@PathVariable Long id){
+        return ResponseEntity.ok(usuarioService.getAllByEmpresa(id));
     }
 
     @PostMapping
