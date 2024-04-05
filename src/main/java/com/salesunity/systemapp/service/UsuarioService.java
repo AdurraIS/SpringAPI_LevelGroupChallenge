@@ -4,6 +4,7 @@ import com.salesunity.systemapp.dto.EmpresaDTO;
 import com.salesunity.systemapp.dto.UsuarioDTO;
 import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.model.Usuario;
+import com.salesunity.systemapp.model.roles.UsuarioRoles;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
 import com.salesunity.systemapp.repository.UsuarioRepository;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -28,6 +31,9 @@ public class UsuarioService {
 
     public Page<UsuarioDTO> getAllPaginable(Pageable pageable){
         return usuarioRepository.findAll(pageable).map(UsuarioDTO::new);
+    }
+    public List<UsuarioDTO> getAllByEmpresa(Long id){
+        return usuarioRepository.findByEmpresa(id).stream().map(UsuarioDTO::new).toList();
     }
     public UsuarioDTO findById(Long id){
         return new UsuarioDTO(usuarioRepository.findById(id).orElseThrow());
@@ -48,7 +54,7 @@ public class UsuarioService {
     public Usuario dtoToObject(UsuarioDTO usuarioDTO){
         Usuario usuario = new Usuario();
         usuario.setId(usuarioDTO.getId());
-        usuario.setAdmin(usuarioDTO.isAdmin());
+        usuario.setRole(UsuarioRoles.valueOf(usuarioDTO.getRole()));
         usuario.setName(usuarioDTO.getName());
         usuario.setSenha(usuarioDTO.getSenha());
         usuario.setEmail(usuarioDTO.getEmail());
