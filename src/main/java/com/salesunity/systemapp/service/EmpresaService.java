@@ -58,10 +58,10 @@ public class EmpresaService {
         if(empresaDTO.getProdutos() != null){
             empresa.setProdutos(produtoRepository.findAllById(empresaDTO.getProdutos()));
         }
-        if(empresaDTO.getVendas() != null){
+        if(empresaDTO.getUsuarios() != null){
             empresa.setUsuarios(usuarioRepository.findAllById(empresaDTO.getUsuarios()));
         }
-        if(empresaDTO.getUsuarios() != null){
+        if(empresaDTO.getVendas() != null){
             empresa.setVendas(pedidoRepository.findAllById(empresaDTO.getVendas()));
         }
         return empresa;
