@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-           - name: Set up Java version
+      - name: Set up Java version
         uses: actions/setup-java@v1
         with:
           java-version: '21'
