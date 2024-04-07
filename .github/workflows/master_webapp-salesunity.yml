@@ -33,6 +33,7 @@ jobs:
         with:
           name: systemapp
           path: '${{ github.workspace }}/build/libs/*.jar'
+          
 
   deploy:
     runs-on: windows-latest
@@ -40,19 +41,19 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: sytemapp
+          name: systemapp
+    
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'API-SalesUnity'
+          app-name: 'webapp-salesunity'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_240E06105C2A47E69E9D44E6F23CE964 }}
-          package: '*.jar'
-              
