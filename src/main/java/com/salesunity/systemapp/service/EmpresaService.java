@@ -39,18 +39,18 @@ public class EmpresaService {
 
     }
     public EmpresaDTO saveEmpresa(EmpresaDTO empresaDTO){
-        return new EmpresaDTO(empresaRepository.save(dtoToObject(empresaDTO)));
+        Empresa empresa = new Empresa();
+        return new EmpresaDTO(empresaRepository.save(dtoToObject(empresa,empresaDTO)));
     }
     public void deleteEmpresa(Long id){
         this.findById(id);
         empresaRepository.deleteById(id);
     }
-    public void updateEmpresa(EmpresaDTO newEmpresaDTO){
-        findById(newEmpresaDTO.getId());
-        empresaRepository.save(dtoToObject(newEmpresaDTO));
+    public void updateEmpresa(EmpresaDTO empresaDTO){
+        Empresa empresa = empresaRepository.findById(empresaDTO.getId()).orElseThrow();
+        empresaRepository.save(dtoToObject(empresa, empresaDTO));
     }
-    public Empresa dtoToObject(EmpresaDTO empresaDTO){
-        Empresa empresa = new Empresa();
+    public Empresa dtoToObject(Empresa empresa, EmpresaDTO empresaDTO){
         empresa.setName(empresaDTO.getName());
         empresa.setCnpj(empresaDTO.getCnpj());
         empresa.setType(empresaDTO.getType());

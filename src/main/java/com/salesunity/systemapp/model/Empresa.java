@@ -1,5 +1,6 @@
 package com.salesunity.systemapp.model;
 
+import com.salesunity.systemapp.dto.EmpresaDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

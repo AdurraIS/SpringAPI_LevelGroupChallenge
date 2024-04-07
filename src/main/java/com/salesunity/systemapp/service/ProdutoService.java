@@ -36,18 +36,18 @@ public class ProdutoService {
 
     }
     public ProdutoDTO saveProduto(ProdutoDTO produtoDTO){
-        return new ProdutoDTO(produtoRepository.save(dtoToObject(produtoDTO)));
+        Produto produto = new Produto();
+        return new ProdutoDTO(produtoRepository.save(dtoToObject(produto,produtoDTO)));
     }
     public void deleteProduto(Long id){
         this.findById(id);
         produtoRepository.deleteById(id);
     }
     public void updateProduto(ProdutoDTO newProdutoDTO){
-        findById(newProdutoDTO.getId());
-        produtoRepository.save(dtoToObject(newProdutoDTO));
+        Produto produto = produtoRepository.findById(newProdutoDTO.getId()).orElseThrow();
+        produtoRepository.save(dtoToObject(produto,newProdutoDTO));
     }
-    public Produto dtoToObject(ProdutoDTO produtoDTO){
-        Produto produto = new Produto();
+    public Produto dtoToObject(Produto produto, ProdutoDTO produtoDTO){
         produto.setId(produtoDTO.getId());
         produto.setProductType(tipoProdutoRepository.findById(produtoDTO.getProductType_id()).orElseThrow());
         produto.setCategory(categoriaRepository.findById(produtoDTO.getCategory_id()).orElseThrow());

@@ -38,18 +38,18 @@ public class PedidoService {
     }
 
     public PedidoDTO savePedido(PedidoDTO pedidoDTO){
-        return new PedidoDTO(pedidoRepository.save(dtoToObject(pedidoDTO)));
+        Pedido pedido = new Pedido();
+        return new PedidoDTO(pedidoRepository.save(dtoToObject(pedido,pedidoDTO)));
     }
     public void deletePedido(Long id){
         PedidoDTO pedidoDTO = this.findById(id);
         pedidoRepository.deleteById(id);
     }
     public void updatePedido(PedidoDTO newPedidoDTO){
-        findById(newPedidoDTO.getId());
-        pedidoRepository.save(dtoToObject(newPedidoDTO));
+        Pedido pedido = pedidoRepository.findById(newPedidoDTO.getId()).orElseThrow();
+        pedidoRepository.save(dtoToObject(pedido,newPedidoDTO));
     }
-    public Pedido dtoToObject(PedidoDTO pedidoDTO){
-        Pedido pedido = new Pedido();
+    public Pedido dtoToObject(Pedido pedido,PedidoDTO pedidoDTO){
         pedido.setId(pedidoDTO.getId());
         pedido.setItems(itemRepository.findAllById(pedidoDTO.getItems()));
         pedido.setFornecedor(empresaRepository.findById(pedidoDTO.getFornecedor()).orElseThrow());
