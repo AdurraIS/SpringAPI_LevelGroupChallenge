@@ -37,7 +37,7 @@ public class CategoriaService {
         categoriaRepository.save(dtoToObject(categoria,newCategoriaDTO));
     }
     public Categoria dtoToObject(Categoria categoria, CategoriaDTO categoriaDTO){
-        categoria.setName(categoria.getName());
+        categoria.setName(categoriaDTO.getName());
         return categoria;
     }
 }
