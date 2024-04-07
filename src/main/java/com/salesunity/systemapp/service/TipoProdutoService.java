@@ -37,7 +37,7 @@ public class TipoProdutoService {
         tipoProdutoRepository.save(dtoToObject(tipoProduto,newTipoProdutoDTO));
     }
     public TipoProduto dtoToObject(TipoProduto tipoProduto, TipoProdutoDTO tipoProdutoDTO){
-        tipoProduto.setName(tipoProduto.getName());
+        tipoProduto.setName(tipoProdutoDTO.getName());
         return tipoProduto;
     }
 }
