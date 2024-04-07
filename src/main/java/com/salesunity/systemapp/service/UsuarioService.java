@@ -40,7 +40,8 @@ public class UsuarioService {
 
     }
     public UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO){
-        return new UsuarioDTO(usuarioRepository.save(dtoToObject(usuarioDTO)));
+        Usuario usuario = new Usuario();
+        return new UsuarioDTO(usuarioRepository.save(dtoToObject(usuario,usuarioDTO)));
 
     }
     public void deleteUsuario(Long id){
@@ -48,11 +49,10 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
     public void updateUsuario(UsuarioDTO newUsuarioDTO){
-        findById(newUsuarioDTO.getId());
-        usuarioRepository.save(dtoToObject(newUsuarioDTO));
+        Usuario usuario = usuarioRepository.findById(newUsuarioDTO.getId()).orElseThrow();
+        usuarioRepository.save(dtoToObject(usuario, newUsuarioDTO));
     }
-    public Usuario dtoToObject(UsuarioDTO usuarioDTO){
-        Usuario usuario = new Usuario();
+    public Usuario dtoToObject(Usuario usuario,UsuarioDTO usuarioDTO){
         usuario.setId(usuarioDTO.getId());
         usuario.setRole(UsuarioRoles.valueOf(usuarioDTO.getRole()));
         usuario.setName(usuarioDTO.getName());

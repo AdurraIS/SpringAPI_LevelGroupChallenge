@@ -25,18 +25,18 @@ public class ItemService {
         return new ItemDTO(itemRepository.findById(id).orElseThrow());
     }
     public ItemDTO saveItem(ItemDTO itemDTO){
-        return new ItemDTO(itemRepository.save(dtoToObject(itemDTO)));
+        Item item = new Item();
+        return new ItemDTO(itemRepository.save(dtoToObject(item,itemDTO)));
     }
     public void deleteItem(Long id){
         this.findById(id);
         itemRepository.deleteById(id);
     }
     public void updateItem(ItemDTO newItemDTO){
-        findById(newItemDTO.getId());
-        itemRepository.save(dtoToObject(newItemDTO));
+        Item item = itemRepository.findById(newItemDTO.getId()).orElseThrow();
+        itemRepository.save(dtoToObject(item,newItemDTO));
     }
-    public Item dtoToObject(ItemDTO itemDTO){
-        Item item = new Item();
+    public Item dtoToObject(Item item,ItemDTO itemDTO){
         item.setId(itemDTO.getId());
         item.setPedido(pedidoRepository.findById(itemDTO.getPedido_id()).orElseThrow());
         item.setProduto(produtoRepository.findById(itemDTO.getProduto_id()).orElseThrow());
