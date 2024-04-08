@@ -55,38 +55,38 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 ## Endpoints(Em breve no Swagger):
 
 - Cadastro de Usuario e Login
-  - /auth/login (POST) (LIVRE)
-  - /auth/register (POST) (LIVRE)
+  - /auth/login (POST) (LIVRE) 200 OK
+  - /auth/register (POST) (LIVRE) 200 OK
 - Criação
-  - /api/v1/produtos (POST) (ADMIN) (TOKEN)
-  - /api/v1/empresas (POST) (LIVRE)
-  - /api/v1/pedidos (POST) (USER) (TOKEN)
-  - /api/v1/compras (POST) (USER) (TOKEN)
+  - /api/v1/produtos (POST) (ADMIN) (TOKEN) 201 Created
+  - /api/v1/empresas (POST) (LIVRE) 201 Created
+  - /api/v1/pedidos (POST) (USER) (TOKEN) 201 Created
+  - /api/v1/compras (POST) (USER) (TOKEN) 201 Created
 - Atualizar
-  - /api/v1/empresas (PUT) (USER) (TOKEN)
-  - /api/v1/usuarios (PUT) (USER) (TOKEN)
-  - /api/v1/produtos (PUT) (USER) (TOKEN)
-  - /api/v1/pedidos (PUT) (USER) (TOKEN)
-  - /api/v1/compras (PUT) (USER) (TOKEN)
+  - /api/v1/empresas (PUT) (USER) (TOKEN) 204 No Content
+  - /api/v1/usuarios (PUT) (USER) (TOKEN) 204 No Content
+  - /api/v1/produtos (PUT) (USER) (TOKEN) 204 No Content
+  - /api/v1/pedidos (PUT) (USER) (TOKEN) 204 No Content
+  - /api/v1/compras (PUT) (USER) (TOKEN) 204 No Content
 - Apagar
-  - /api/v1/produtos (DELETE) (USER) (TOKEN)
-  - /api/v1/usuario (DELETE) (USER) (TOKEN)
-  - /api/v1/empresa (DELETE) (USER) (TOKEN)
-  - /api/v1/pedidos (DELETE) (USER) (TOKEN)
-  - /api/v1/compras (DELETE) (USER) (TOKEN)
+  - /api/v1/produtos (DELETE) (USER) (TOKEN) 204 No Content 
+  - /api/v1/usuario (DELETE) (USER) (TOKEN) 204 No Content
+  - /api/v1/empresa (DELETE) (USER) (TOKEN) 204 No Content
+  - /api/v1/pedidos (DELETE) (USER) (TOKEN) 204 No Content
+  - /api/v1/compras (DELETE) (USER) (TOKEN) 204 No Content
 - Get Id
-  - /api/v1/produtos/id (GET) (USER) (TOKEN)
-  - /api/v1/usuario/id (GET) (USER) (TOKEN)
-  - /api/v1/empresa/id (GET) (USER) (TOKEN)
-  - /api/v1/pedidos/id (GET) (USER) (TOKEN)
-  - /api/v1/compras/id (GET) (USER) (TOKEN)
+  - /api/v1/produtos/id (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/usuario/id (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/empresa/id (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/pedidos/id (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/compras/id (GET) (USER) (TOKEN) 200 OK
 - Get Paginable
-  - /api/v1/empresas?page=0&size=10 (GET) (USER) (TOKEN)
-  - /api/v1/pedidos?page=0&size=10 (GET) (USER) (TOKEN)
-  - /api/v1/produtos?page=0&size=10 (GET) (USER) (TOKEN)
+  - /api/v1/empresas?page=0&size=10 (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/pedidos?page=0&size=10 (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/produtos?page=0&size=10 (GET) (USER) (TOKEN) 200 OK
 - Get All
-  - /api/v1/categorias (GET) (USER) (TOKEN)
-  - /api/v1/tipoprodutos (GET) (USER) (TOKEN)
+  - /api/v1/categorias (GET) (USER) (TOKEN) 200 OK
+  - /api/v1/tipoprodutos (GET) (USER) (TOKEN) 200 OK
 
 ## Pontos a melhorar:
   - Segurança e acesso a endpoints:
