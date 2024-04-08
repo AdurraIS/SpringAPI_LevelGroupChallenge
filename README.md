@@ -7,7 +7,7 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 - Transformar a experiência de compra, tornando-a intuitiva, eficiente e segura através da criação de uma plataforma autônoma que conecta clientes e fornecedores.
 - Simplificar o processo de solicitação de cotações e compras, oferecendo uma abordagem mais eficaz e ágil para empresas de diversos setores.
 - Gerar impactos financeiros positivos para as empresas, através da automação e simplificação dos processos, resultando em economias operacionais consideráveis, redução da necessidade de mão de obra e agilização do ciclo de compras.
-
+# [Video apresentando API](https://www.youtube.com/watch?v=sWFI0jVEgRk)
 ### Desenvolvedores:
 | Registro | Nome  | Responsabilidade | Disciplinas|
 | ------------- | ------------- | ------------- | ------------- |
