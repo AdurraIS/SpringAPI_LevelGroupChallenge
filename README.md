@@ -8,6 +8,15 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 - Simplificar o processo de solicitação de cotações e compras, oferecendo uma abordagem mais eficaz e ágil para empresas de diversos setores.
 - Gerar impactos financeiros positivos para as empresas, através da automação e simplificação dos processos, resultando em economias operacionais consideráveis, redução da necessidade de mão de obra e agilização do ciclo de compras.
 
+### Desenvolvedores:
+| Registro | Nome  | Responsabilidade | Disciplinas|
+| ------------- | ------------- | ------------- | ------------- |
+| 97161 | Giovanna Tricerri | Data Modeler - Criação de banco de dados e atuação em pontas de JPA | DATABASE / ENTERPRISE APPLICATION |
+| 96958 | Giovanni Ultramari | Desenvolvedor back-end | ENTERPRISE APPLICATION / DIGITAL BUSINESS  |
+| 97374 |Lucas Contrucci | Responsável na documentação e arquitetura do projeto e criação de Fluxogramas | DEVOPS TOOLS E CLOUD / ENTERPRISE APPLICATION |
+| 97058 | Matheus Santos | Tester e implementação de automação na aplicação | COMPLIANCE & QA /  IOT, IOB & IA |
+| 96840 | Nicolas Souza | Desenvolvedor Front-end | HYBRID MOBILE APP |
+
 ### Tecnologias utilizadas:
 
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
@@ -23,6 +32,12 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 ### Ferramentas de desenvolvimento:
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+## Arquitetura e Design Patterns:
+
+- MVC : Utilizando Models e Controllers.
+- Arquitetura em camadas: Utilizando Repositories para a camada de persistência.
+- Data Transfer Object: Utilizando DTOs para transferir dados entre as camadas do sistema.
+- SOLID: Fazendo inversão de dependência e utilizando princípio da responsabilidade única.
 
 ## Diagrama atualizado:
 ![Diagrama](https://github.com/AdurraIS/SpringAPI_LevelGroupChallenge/assets/119917719/8ed2c8a1-c750-4ba0-ad9f-332e4ee471cb)
