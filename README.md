@@ -34,6 +34,7 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ## Arquitetura e Design Patterns:
 
+- Estilo arquitetural: API REST.
 - MVC : Utilizando Models e Controllers.
 - Arquitetura em camadas: Utilizando Repositories para a camada de persistência.
 - Data Transfer Object: Utilizando DTOs para transferir dados entre as camadas do sistema.
