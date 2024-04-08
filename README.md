@@ -54,39 +54,34 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 - Criptografia de Senhas
 ## Endpoints(Em breve no Swagger):
 
-- Cadastro de Usuario e Login (POST) (LIVRE) 200 OK
-  - /auth/login
-  - /auth/register
-- Criação
-  - /api/v1/produtos (POST) (ADMIN) (TOKEN) 201 Created
-  - /api/v1/empresas (POST) (LIVRE) 201 Created
-  - /api/v1/pedidos (POST) (USER) (TOKEN) 201 Created
-  - /api/v1/compras (POST) (USER) (TOKEN) 201 Created
-- Atualizar (PUT) (USER) (TOKEN) 204 No Content
-  - /api/v1/empresas
-  - /api/v1/usuarios
-  - /api/v1/produtos
-  - /api/v1/pedidos
-  - /api/v1/compras 
-- Apagar (DELETE) (USER) (TOKEN) 204 No Content
-  - /api/v1/produtos
-  - /api/v1/usuario
-  - /api/v1/empresa
-  - /api/v1/pedidos
-  - /api/v1/compras 
-- Get Id (GET) (USER) (TOKEN) 200 OK
-  - /api/v1/produtos/id
-  - /api/v1/usuario/id
-  - /api/v1/empresa/id
-  - /api/v1/pedidos/id
-  - /api/v1/compras/id
-- Get Paginable  (GET) (USER) (TOKEN) 200 OK
-  - /api/v1/empresas?page=0&size=10
-  - /api/v1/pedidos?page=0&size=10
-  - /api/v1/produtos?page=0&size=10
-- Get All  (GET) (USER) (TOKEN) 200 OK
-  - /api/v1/categorias
-  - /api/v1/tipoprodutos
+| Endpoint                         | Method | Status            | Role  | Token |
+|----------------------------------|--------|-------------------|-------|-------|
+| /auth/login                      | POST   | 200 OK            | LIVRE | NOT   |
+| /auth/register                   | POST   | 200 OK            | LIVRE | NOT   |
+| /api/v1/empresas                 | POST   | 201 Created       | LIVRE | NOT   |
+| /api/v1/produto                  | POST   | 201 Created       | ADMIN | YES   |
+| /api/v1/pedidos                  | POST   | 201 Created       | USER  | YES   |
+| /api/v1/compras                  | POST   | 201 Created       | USER  | YES   |
+| /api/v1/empresas                 | PUT    | 204 No Content    | USER  | TOKEN |
+| /api/v1/usuarios                 | PUT    | 204 No Content    | USER  | TOKEN |
+| /api/v1/produtos                 | PUT    | 204 No Content    | USER  | TOKEN |
+| /api/v1/pedidos                  | PUT    | 204 No Content    | USER  | TOKEN |
+| /api/v1/compras                  | PUT    | 204 No Content    | USER  | TOKEN |
+| /api/v1/produtos                 | DELETE | 204 No Content    | USER  | TOKEN |
+| /api/v1/usuario                  | DELETE | 204 No Content    | USER  | TOKEN |
+| /api/v1/empresa                  | DELETE | 204 No Content    | USER  | TOKEN |
+| /api/v1/pedidos                  | DELETE | 204 No Content    | USER  | TOKEN |
+| /api/v1/compras                  | DELETE | 204 No Content    | USER  | TOKEN |
+| /api/v1/produtos/id              | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/usuario/id               | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/empresa/id               | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/pedidos/id               | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/compras/id               | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/empresas?page=0&size=10 | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/pedidos?page=0&size=10  | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/produtos?page=0&size=10 | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/categorias               | GET    | 200 OK            | USER  | TOKEN |
+| /api/v1/tipoprodutos             | GET    | 200 OK            | USER  | TOKEN |
 
 ## Pontos a melhorar:
   - Segurança e acesso a endpoints:
