@@ -8,6 +8,7 @@ import com.salesunity.systemapp.repository.CategoriaRepository;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.ProdutoRepository;
 import com.salesunity.systemapp.repository.TipoProdutoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +36,7 @@ public class ProdutoService {
         return new ProdutoDTO(produtoRepository.findById(id).orElseThrow());
 
     }
+    @Transactional
     public ProdutoDTO saveProduto(ProdutoDTO produtoDTO){
         Produto produto = new Produto();
         return new ProdutoDTO(produtoRepository.save(dtoToObject(produto,produtoDTO)));
@@ -43,6 +45,7 @@ public class ProdutoService {
         this.findById(id);
         produtoRepository.deleteById(id);
     }
+    @Transactional
     public void updateProduto(ProdutoDTO newProdutoDTO){
         Produto produto = produtoRepository.findById(newProdutoDTO.getId()).orElseThrow();
         produtoRepository.save(dtoToObject(produto,newProdutoDTO));

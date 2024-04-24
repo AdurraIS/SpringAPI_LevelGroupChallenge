@@ -7,6 +7,7 @@ import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
 import com.salesunity.systemapp.repository.ProdutoRepository;
 import com.salesunity.systemapp.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,7 @@ public class EmpresaService {
         return new EmpresaDTO(empresaRepository.findById(id).orElseThrow());
 
     }
+    @Transactional
     public EmpresaDTO saveEmpresa(EmpresaDTO empresaDTO){
         Empresa empresa = new Empresa();
         return new EmpresaDTO(empresaRepository.save(dtoToObject(empresa,empresaDTO)));
@@ -46,6 +48,7 @@ public class EmpresaService {
         this.findById(id);
         empresaRepository.deleteById(id);
     }
+    @Transactional
     public void updateEmpresa(EmpresaDTO empresaDTO){
         Empresa empresa = empresaRepository.findById(empresaDTO.getId()).orElseThrow();
         empresaRepository.save(dtoToObject(empresa, empresaDTO));

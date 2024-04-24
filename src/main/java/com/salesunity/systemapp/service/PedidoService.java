@@ -8,6 +8,7 @@ import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.ItemRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
 import com.salesunity.systemapp.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,7 @@ public class PedidoService {
         return new PedidoDTO(pedidoRepository.findById(id).orElseThrow());
     }
 
+    @Transactional
     public PedidoDTO savePedido(PedidoDTO pedidoDTO){
         Pedido pedido = new Pedido();
         return new PedidoDTO(pedidoRepository.save(dtoToObject(pedido,pedidoDTO)));
@@ -45,6 +47,7 @@ public class PedidoService {
         PedidoDTO pedidoDTO = this.findById(id);
         pedidoRepository.deleteById(id);
     }
+    @Transactional
     public void updatePedido(PedidoDTO newPedidoDTO){
         Pedido pedido = pedidoRepository.findById(newPedidoDTO.getId()).orElseThrow();
         pedidoRepository.save(dtoToObject(pedido,newPedidoDTO));

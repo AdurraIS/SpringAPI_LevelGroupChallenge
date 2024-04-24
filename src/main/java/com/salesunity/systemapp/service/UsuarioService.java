@@ -8,6 +8,7 @@ import com.salesunity.systemapp.model.roles.UsuarioRoles;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
 import com.salesunity.systemapp.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,7 @@ public class UsuarioService {
         return new UsuarioDTO(usuarioRepository.findById(id).orElseThrow());
 
     }
+    @Transactional
     public UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO){
         Usuario usuario = new Usuario();
         return new UsuarioDTO(usuarioRepository.save(dtoToObject(usuario,usuarioDTO)));
@@ -48,6 +50,7 @@ public class UsuarioService {
         this.findById(id);
         usuarioRepository.deleteById(id);
     }
+    @Transactional
     public void updateUsuario(UsuarioDTO newUsuarioDTO){
         Usuario usuario = usuarioRepository.findById(newUsuarioDTO.getId()).orElseThrow();
         usuarioRepository.save(dtoToObject(usuario, newUsuarioDTO));

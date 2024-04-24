@@ -5,6 +5,7 @@ import com.salesunity.systemapp.model.Item;
 import com.salesunity.systemapp.repository.ItemRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
 import com.salesunity.systemapp.repository.ProdutoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +25,7 @@ public class ItemService {
     public ItemDTO findById(Long id){
         return new ItemDTO(itemRepository.findById(id).orElseThrow());
     }
+    @Transactional
     public ItemDTO saveItem(ItemDTO itemDTO){
         Item item = new Item();
         return new ItemDTO(itemRepository.save(dtoToObject(item,itemDTO)));
@@ -32,6 +34,7 @@ public class ItemService {
         this.findById(id);
         itemRepository.deleteById(id);
     }
+    @Transactional
     public void updateItem(ItemDTO newItemDTO){
         Item item = itemRepository.findById(newItemDTO.getId()).orElseThrow();
         itemRepository.save(dtoToObject(item,newItemDTO));

@@ -3,6 +3,7 @@ package com.salesunity.systemapp.service;
 import com.salesunity.systemapp.dto.CategoriaDTO;
 import com.salesunity.systemapp.model.Categoria;
 import com.salesunity.systemapp.repository.CategoriaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class CategoriaService {
     public CategoriaDTO findById(Long id){
         return new CategoriaDTO(categoriaRepository.findById(id).orElseThrow());
     }
+    @Transactional
     public CategoriaDTO saveCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = new Categoria();
         return new CategoriaDTO(categoriaRepository.save(dtoToObject(categoria,categoriaDTO)));
@@ -32,6 +34,7 @@ public class CategoriaService {
         this.findById(id);
         categoriaRepository.deleteById(id);
     }
+    @Transactional
     public void updateCategoria(CategoriaDTO newCategoriaDTO){
         Categoria categoria = categoriaRepository.findById(newCategoriaDTO.getId()).orElseThrow();
         categoriaRepository.save(dtoToObject(categoria,newCategoriaDTO));
