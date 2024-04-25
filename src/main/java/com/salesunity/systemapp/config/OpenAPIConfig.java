@@ -15,7 +15,7 @@ public class OpenAPIConfig {
     @Bean
     public OpenAPI geraDocumentacao() {
         Server devServer = new Server();
-        devServer.setUrl("http://localhost:8080");
+        devServer.setUrl("https://localhost:8080");
         devServer.description("Url de desenvolvimento local");
 
         Contact contact = new Contact();
@@ -25,6 +25,8 @@ public class OpenAPIConfig {
                 .version("0.1")
                 .contact(contact)
                 .description("API do Projeto Sales Unity");
+
         return new OpenAPI().info(info).servers(List.of(devServer));
+
     }
 }

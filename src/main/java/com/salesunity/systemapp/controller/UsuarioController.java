@@ -1,7 +1,7 @@
 package com.salesunity.systemapp.controller;
 
-import com.salesunity.systemapp.dto.UsuarioDTO;
-import com.salesunity.systemapp.service.UsuarioService;
+import com.salesunity.systemapp.dto.Usuario.UsuarioRequestDTO;
+import com.salesunity.systemapp.dto.Usuario.UsuarioResponseDTO;
 import com.salesunity.systemapp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,23 +20,23 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<Page<UsuarioDTO>> getPaginableUsuarios(@RequestParam(name = "page", defaultValue = "0") int page,
-                                                                 @RequestParam(name = "size", defaultValue = "10") int size){
+    public ResponseEntity<Page<UsuarioResponseDTO>> getPaginableUsuarios(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                                        @RequestParam(name = "size", defaultValue = "10") int size){
         PageRequest pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(usuarioService.getAllPaginable(pageable));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> getUsuarioById(@PathVariable Long id){
+    public ResponseEntity<UsuarioResponseDTO> getUsuarioById(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.findById(id));
     }
     @GetMapping("/empresa/{id}")
-    public ResponseEntity<List<UsuarioDTO>> getAllUsuarioByEmpresa(@PathVariable Long id){
+    public ResponseEntity<List<UsuarioResponseDTO>> getAllUsuarioByEmpresa(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.getAllByEmpresa(id));
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> createUsuario(@RequestBody UsuarioDTO usuarioDTO){
-        return ResponseEntity.ok(usuarioService.saveUsuario(usuarioDTO));
+    public ResponseEntity<UsuarioRequestDTO> createUsuario(@RequestBody UsuarioRequestDTO usuarioRequestDTO){
+        return ResponseEntity.ok(usuarioService.saveUsuario(usuarioRequestDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -46,8 +46,8 @@ public class UsuarioController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateUsuario(@RequestBody UsuarioDTO usuarioDTO){
-        usuarioService.updateUsuario(usuarioDTO);
+    public ResponseEntity<Void> updateUsuario(@RequestBody UsuarioRequestDTO usuarioRequestDTO){
+        usuarioService.updateUsuario(usuarioRequestDTO);
         return ResponseEntity.noContent().build();
     }
 

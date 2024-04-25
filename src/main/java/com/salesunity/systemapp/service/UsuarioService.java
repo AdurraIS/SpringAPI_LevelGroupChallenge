@@ -1,8 +1,7 @@
 package com.salesunity.systemapp.service;
 
-import com.salesunity.systemapp.dto.EmpresaDTO;
-import com.salesunity.systemapp.dto.UsuarioDTO;
-import com.salesunity.systemapp.model.Empresa;
+import com.salesunity.systemapp.dto.Usuario.UsuarioRequestDTO;
+import com.salesunity.systemapp.dto.Usuario.UsuarioResponseDTO;
 import com.salesunity.systemapp.model.Usuario;
 import com.salesunity.systemapp.model.roles.UsuarioRoles;
 import com.salesunity.systemapp.repository.EmpresaRepository;
@@ -30,20 +29,20 @@ public class UsuarioService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public Page<UsuarioDTO> getAllPaginable(Pageable pageable){
-        return usuarioRepository.findAll(pageable).map(UsuarioDTO::new);
+    public Page<UsuarioResponseDTO> getAllPaginable(Pageable pageable){
+        return usuarioRepository.findAll(pageable).map(UsuarioResponseDTO::new);
     }
-    public List<UsuarioDTO> getAllByEmpresa(Long id){
-        return usuarioRepository.findByEmpresa(id).stream().map(UsuarioDTO::new).toList();
+    public List<UsuarioResponseDTO> getAllByEmpresa(Long id){
+        return usuarioRepository.findByEmpresa(id).stream().map(UsuarioResponseDTO::new).toList();
     }
-    public UsuarioDTO findById(Long id){
-        return new UsuarioDTO(usuarioRepository.findById(id).orElseThrow());
+    public UsuarioResponseDTO findById(Long id){
+        return new UsuarioResponseDTO(usuarioRepository.findById(id).orElseThrow());
 
     }
     @Transactional
-    public UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO){
+    public UsuarioRequestDTO saveUsuario(UsuarioRequestDTO usuarioRequestDTO){
         Usuario usuario = new Usuario();
-        return new UsuarioDTO(usuarioRepository.save(dtoToObject(usuario,usuarioDTO)));
+        return new UsuarioRequestDTO(usuarioRepository.save(dtoToObject(usuario, usuarioRequestDTO)));
 
     }
     public void deleteUsuario(Long id){
@@ -51,20 +50,17 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
     @Transactional
-    public void updateUsuario(UsuarioDTO newUsuarioDTO){
-        Usuario usuario = usuarioRepository.findById(newUsuarioDTO.getId()).orElseThrow();
-        usuarioRepository.save(dtoToObject(usuario, newUsuarioDTO));
+    public void updateUsuario(UsuarioRequestDTO newUsuarioRequestDTO){
+        Usuario usuario = usuarioRepository.findById(newUsuarioRequestDTO.getId()).orElseThrow();
+        usuarioRepository.save(dtoToObject(usuario, newUsuarioRequestDTO));
     }
-    public Usuario dtoToObject(Usuario usuario,UsuarioDTO usuarioDTO){
-        usuario.setId(usuarioDTO.getId());
-        usuario.setRole(UsuarioRoles.valueOf(usuarioDTO.getRole()));
-        usuario.setName(usuarioDTO.getName());
-        usuario.setSenha(usuarioDTO.getSenha());
-        usuario.setEmail(usuarioDTO.getEmail());
-        usuario.setEmpresa(empresaRepository.findById(usuarioDTO.getEmpresa_id()).orElseThrow());
-        if(usuarioDTO.getCompras_id() != null){
-            usuario.setCompras(pedidoRepository.findAllById(usuarioDTO.getCompras_id()));
-        }
+    public Usuario dtoToObject(Usuario usuario, UsuarioRequestDTO usuarioRequestDTO){
+        usuario.setId(usuarioRequestDTO.getId());
+        usuario.setRole(UsuarioRoles.valueOf(usuarioRequestDTO.getRole()));
+        usuario.setName(usuarioRequestDTO.getName());
+        usuario.setSenha(usuarioRequestDTO.getSenha());
+        usuario.setEmail(usuarioRequestDTO.getEmail());
+        usuario.setEmpresa(empresaRepository.findById(usuarioRequestDTO.getEmpresa_id()).orElseThrow());
         return usuario;
     }
 

@@ -20,16 +20,10 @@ import java.util.Optional;
 public class EmpresaService {
 
     private final EmpresaRepository empresaRepository;
-    private final ProdutoRepository produtoRepository;
-    private final UsuarioRepository usuarioRepository;
-    private final PedidoRepository pedidoRepository;
 
     @Autowired
-    public EmpresaService(EmpresaRepository empresaRepository, ProdutoRepository produtoRepository, UsuarioRepository usuarioRepository, PedidoRepository pedidoRepository) {
+    public EmpresaService(EmpresaRepository empresaRepository){
         this.empresaRepository = empresaRepository;
-        this.produtoRepository = produtoRepository;
-        this.usuarioRepository = usuarioRepository;
-        this.pedidoRepository = pedidoRepository;
     }
 
     public Page<EmpresaDTO> getAllPaginable(Pageable pageable){
@@ -58,15 +52,6 @@ public class EmpresaService {
         empresa.setCnpj(empresaDTO.getCnpj());
         empresa.setType(empresaDTO.getType());
         empresa.setEmail(empresaDTO.getEmail());
-        if(empresaDTO.getProdutos() != null){
-            empresa.setProdutos(produtoRepository.findAllById(empresaDTO.getProdutos()));
-        }
-        if(empresaDTO.getUsuarios() != null){
-            empresa.setUsuarios(usuarioRepository.findAllById(empresaDTO.getUsuarios()));
-        }
-        if(empresaDTO.getVendas() != null){
-            empresa.setVendas(pedidoRepository.findAllById(empresaDTO.getVendas()));
-        }
         return empresa;
     }
 

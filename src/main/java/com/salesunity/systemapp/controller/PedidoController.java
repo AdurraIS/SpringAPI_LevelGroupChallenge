@@ -23,6 +23,12 @@ public class PedidoController {
         PageRequest pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(pedidoService.getAllPaginable(pageable));
     }
+    @GetMapping("/comprador/{id}")
+    public ResponseEntity<Page<PedidoDTO>> getPaginablePedidosByComprador(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                               @RequestParam(name = "size", defaultValue = "10") int size, @PathVariable Long id){
+        PageRequest pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(pedidoService.getAllPaginableByComprador(pageable, id));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<PedidoDTO> getPedidoById(@PathVariable Long id){
         return ResponseEntity.ok(pedidoService.findById(id));

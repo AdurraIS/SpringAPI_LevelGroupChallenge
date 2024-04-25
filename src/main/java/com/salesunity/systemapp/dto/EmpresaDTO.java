@@ -24,11 +24,6 @@ public class EmpresaDTO {
 
     private String email;
 
-    private List<Long> produtos;
-
-    private List<Long> usuarios;
-
-    private List<Long> vendas;
 
     public EmpresaDTO(Empresa empresa) {
         this.id = empresa.getId();
@@ -36,16 +31,6 @@ public class EmpresaDTO {
         this.cnpj = empresa.getCnpj();
         this.type = empresa.getType();
         this.email = empresa.getEmail();
-        if(empresa.getVendas() != null){
-            this.vendas = empresa.getVendas().stream().map(Pedido::getId).toList();
-        }
-        if(empresa.getProdutos() != null){
-            this.produtos = empresa.getProdutos().stream().map(Produto::getId).toList();
-        }
-        if(empresa.getUsuarios() != null){
-            this.usuarios = empresa.getUsuarios().stream().map(Usuario::getId).toList();
-        }
-
 
     }
 }
