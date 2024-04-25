@@ -20,13 +20,11 @@ public class UsuarioService {
 
     private final EmpresaRepository empresaRepository;
     private final UsuarioRepository usuarioRepository;
-    private final PedidoRepository pedidoRepository;
 
     @Autowired
-    public UsuarioService(EmpresaRepository empresaRepository, UsuarioRepository usuarioRepository, PedidoRepository pedidoRepository) {
+    public UsuarioService(EmpresaRepository empresaRepository, UsuarioRepository usuarioRepository) {
         this.empresaRepository = empresaRepository;
         this.usuarioRepository = usuarioRepository;
-        this.pedidoRepository = pedidoRepository;
     }
 
     public Page<UsuarioResponseDTO> getAllPaginable(Pageable pageable){

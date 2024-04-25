@@ -1,14 +1,11 @@
 package com.salesunity.systemapp.dto;
 
 import com.salesunity.systemapp.model.Empresa;
-import com.salesunity.systemapp.model.Pedido;
-import com.salesunity.systemapp.model.Produto;
-import com.salesunity.systemapp.model.Usuario;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Getter
 @NoArgsConstructor

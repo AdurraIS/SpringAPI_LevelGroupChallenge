@@ -1,19 +1,14 @@
 package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.EmpresaDTO;
-import com.salesunity.systemapp.dto.ItemDTO;
 import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.repository.EmpresaRepository;
-import com.salesunity.systemapp.repository.PedidoRepository;
-import com.salesunity.systemapp.repository.ProdutoRepository;
-import com.salesunity.systemapp.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 
 @Service

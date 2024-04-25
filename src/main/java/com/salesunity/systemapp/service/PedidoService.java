@@ -1,9 +1,7 @@
 package com.salesunity.systemapp.service;
 
-import com.salesunity.systemapp.dto.EmpresaDTO;
 import com.salesunity.systemapp.dto.ItemDTO;
 import com.salesunity.systemapp.dto.PedidoDTO;
-import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.model.Item;
 import com.salesunity.systemapp.model.Pedido;
 import com.salesunity.systemapp.repository.EmpresaRepository;
@@ -50,7 +48,6 @@ public class PedidoService {
         Pedido pedido = new Pedido();
 
         List<Item> itemsPedido = new ArrayList<>();
-        Empresa empresaPedido = new Empresa();
 
         // verifica se o ID da empresa existe
         if (pedidoDTO.getFornecedor().getId() != null) {
@@ -82,7 +79,7 @@ public class PedidoService {
         return new PedidoDTO(pedidoRepository.save(pedido));
     }
     public void deletePedido(Long id){
-        PedidoDTO pedidoDTO = this.findById(id);
+        findById(id);
         pedidoRepository.deleteById(id);
     }
     @Transactional

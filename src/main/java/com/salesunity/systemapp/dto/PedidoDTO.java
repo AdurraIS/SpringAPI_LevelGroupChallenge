@@ -1,6 +1,5 @@
 package com.salesunity.systemapp.dto;
 
-import com.salesunity.systemapp.dto.Usuario.UsuarioRequestDTO;
 import com.salesunity.systemapp.dto.Usuario.UsuarioResponseDTO;
 import com.salesunity.systemapp.model.Pedido;
 import lombok.Getter;

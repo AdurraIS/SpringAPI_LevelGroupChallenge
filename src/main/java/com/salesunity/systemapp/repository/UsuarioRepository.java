@@ -1,8 +1,6 @@
 package com.salesunity.systemapp.repository;
 
 import com.salesunity.systemapp.model.Usuario;
-import org.hibernate.query.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
