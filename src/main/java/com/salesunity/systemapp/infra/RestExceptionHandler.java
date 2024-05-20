@@ -14,6 +14,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private ResponseEntity<String> userNotFound(UserNotFound exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
     }
+    @ExceptionHandler(EmpresaCreationFailed.class)
+    private ResponseEntity<String> empresaCreationFailed(EmpresaCreationFailed exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Empresa creation failed");
+    }
     @ExceptionHandler(EmpresaNotFound.class)
     private ResponseEntity<String> empresaNotFound(EmpresaNotFound exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Empresa not found");

@@ -4,8 +4,10 @@ package com.salesunity.systemapp.dto.Usuario;
 import com.salesunity.systemapp.model.Usuario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class UsuarioRequestDTO {
 

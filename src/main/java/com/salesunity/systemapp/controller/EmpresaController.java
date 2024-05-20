@@ -1,5 +1,6 @@
 package com.salesunity.systemapp.controller;
 
+import com.salesunity.systemapp.dto.EmpresaCreate.EmpresaCreateDTO;
 import com.salesunity.systemapp.dto.EmpresaDTO;
 import com.salesunity.systemapp.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public ResponseEntity<EmpresaDTO> createEmpresa(@RequestBody EmpresaDTO empresaDTO){
+    public ResponseEntity<EmpresaCreateDTO> createEmpresa(@RequestBody EmpresaCreateDTO empresaDTO){
         return ResponseEntity.ok(empresaService.saveEmpresa(empresaDTO));
     }
 
