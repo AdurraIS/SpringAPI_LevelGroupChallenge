@@ -1,5 +1,6 @@
 package com.salesunity.systemapp.dto;
 
+import com.salesunity.systemapp.model.Usuario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +10,11 @@ import lombok.Setter;
 public class LoginResponseDTO {
 
     private String token;
-
-    public LoginResponseDTO(String token) {
+    private String nomeUsuario;
+    private Long id;
+    public LoginResponseDTO(String token, Usuario usuario) {
         this.token = token;
+        this.nomeUsuario = usuario.getName();
+        this.id = usuario.getId();
     }
 }

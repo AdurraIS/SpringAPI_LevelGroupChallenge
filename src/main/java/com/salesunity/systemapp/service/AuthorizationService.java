@@ -1,5 +1,6 @@
 package com.salesunity.systemapp.service;
 
+import com.salesunity.systemapp.exceptions.UserNotFound;
 import com.salesunity.systemapp.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,10 @@ public class AuthorizationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.findByEmail(username);
+        UserDetails user = usuarioRepository.findByEmail(username);
+        if(user != null){
+            return user;
+        }
+        throw new UserNotFound();
     }
 }

@@ -1,8 +1,10 @@
 package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.TipoProdutoDTO;
+import com.salesunity.systemapp.exceptions.TipoProdutoNotFound;
 import com.salesunity.systemapp.model.TipoProduto;
 import com.salesunity.systemapp.repository.TipoProdutoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +24,9 @@ public class TipoProdutoService {
         return tipoProdutoRepository.findAll().stream().map(TipoProdutoDTO::new).toList();
     }
     public TipoProdutoDTO findById(Long id){
-        return new TipoProdutoDTO(tipoProdutoRepository.findById(id).orElseThrow());
+        return new TipoProdutoDTO(tipoProdutoRepository.findById(id).orElseThrow(TipoProdutoNotFound::new));
     }
+    @Transactional
     public TipoProdutoDTO saveTipoProduto(TipoProdutoDTO tipoProdutoDTO){
         TipoProduto tipoProduto = new TipoProduto();
         return new TipoProdutoDTO(tipoProdutoRepository.save(dtoToObject(tipoProduto,tipoProdutoDTO)));
@@ -32,8 +35,9 @@ public class TipoProdutoService {
         this.findById(id);
         tipoProdutoRepository.deleteById(id);
     }
+    @Transactional
     public void updateTipoProduto(TipoProdutoDTO newTipoProdutoDTO){
-        TipoProduto tipoProduto = tipoProdutoRepository.findById(newTipoProdutoDTO.getId()).orElseThrow();
+        TipoProduto tipoProduto = tipoProdutoRepository.findById(newTipoProdutoDTO.getId()).orElseThrow(TipoProdutoNotFound::new);
         tipoProdutoRepository.save(dtoToObject(tipoProduto,newTipoProdutoDTO));
     }
     public TipoProduto dtoToObject(TipoProduto tipoProduto, TipoProdutoDTO tipoProdutoDTO){

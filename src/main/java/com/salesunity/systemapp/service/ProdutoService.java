@@ -2,12 +2,17 @@ package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.EmpresaDTO;
 import com.salesunity.systemapp.dto.ProdutoDTO;
+import com.salesunity.systemapp.exceptions.CategoriaNotFound;
+import com.salesunity.systemapp.exceptions.EmpresaNotFound;
+import com.salesunity.systemapp.exceptions.ProdutoNotFound;
+import com.salesunity.systemapp.exceptions.TipoProdutoNotFound;
 import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.model.Produto;
 import com.salesunity.systemapp.repository.CategoriaRepository;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import com.salesunity.systemapp.repository.ProdutoRepository;
 import com.salesunity.systemapp.repository.TipoProdutoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,9 +37,10 @@ public class ProdutoService {
         return produtoRepository.findAll(pageable).map(ProdutoDTO::new);
     }
     public ProdutoDTO findById(Long id){
-        return new ProdutoDTO(produtoRepository.findById(id).orElseThrow());
+        return new ProdutoDTO(produtoRepository.findById(id).orElseThrow(ProdutoNotFound::new));
 
     }
+    @Transactional
     public ProdutoDTO saveProduto(ProdutoDTO produtoDTO){
         Produto produto = new Produto();
         return new ProdutoDTO(produtoRepository.save(dtoToObject(produto,produtoDTO)));
@@ -43,16 +49,17 @@ public class ProdutoService {
         this.findById(id);
         produtoRepository.deleteById(id);
     }
+    @Transactional
     public void updateProduto(ProdutoDTO newProdutoDTO){
-        Produto produto = produtoRepository.findById(newProdutoDTO.getId()).orElseThrow();
+        Produto produto = produtoRepository.findById(newProdutoDTO.getId()).orElseThrow(ProdutoNotFound::new);
         produtoRepository.save(dtoToObject(produto,newProdutoDTO));
     }
     public Produto dtoToObject(Produto produto, ProdutoDTO produtoDTO){
         produto.setId(produtoDTO.getId());
-        produto.setProductType(tipoProdutoRepository.findById(produtoDTO.getProductType_id()).orElseThrow());
-        produto.setCategory(categoriaRepository.findById(produtoDTO.getCategory_id()).orElseThrow());
+        produto.setProductType(tipoProdutoRepository.findById(produtoDTO.getProductType_id()).orElseThrow(TipoProdutoNotFound::new));
+        produto.setCategory(categoriaRepository.findById(produtoDTO.getCategory_id()).orElseThrow(CategoriaNotFound::new));
         produto.setDescription(produtoDTO.getDescription());
-        produto.setEmpresa(empresaRepository.findById(produtoDTO.getEmpresa_id()).orElseThrow());
+        produto.setEmpresa(empresaRepository.findById(produtoDTO.getEmpresa_id()).orElseThrow(EmpresaNotFound::new));
         produto.setPrice(produtoDTO.getPrice());
 
         return produto;

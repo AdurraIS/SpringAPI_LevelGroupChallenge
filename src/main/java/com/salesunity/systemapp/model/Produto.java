@@ -22,11 +22,11 @@ public class Produto {
     @Column(name = "produto_price",nullable = false)
     private Double price;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_category_id", referencedColumnName = "categoria_id")
     private Categoria category;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_productType_id", referencedColumnName = "tipo_produto_id")
     private TipoProduto productType;
 

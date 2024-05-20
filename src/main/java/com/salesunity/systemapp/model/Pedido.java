@@ -20,11 +20,11 @@ public class Pedido {
     @Column(name = "pedido_concluido",nullable = false)
     private Boolean concluido;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "fornecedor_empresa_id",referencedColumnName = "empresa_id")
     private Empresa fornecedor;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "comprador_usuario_id",referencedColumnName = "usuario_id")
     private Usuario comprador;
 
