@@ -2,6 +2,8 @@ package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.Usuario.UsuarioRequestDTO;
 import com.salesunity.systemapp.dto.Usuario.UsuarioResponseDTO;
+import com.salesunity.systemapp.exceptions.EmpresaNotFound;
+import com.salesunity.systemapp.exceptions.UserNotFound;
 import com.salesunity.systemapp.model.Usuario;
 import com.salesunity.systemapp.model.roles.UsuarioRoles;
 import com.salesunity.systemapp.repository.EmpresaRepository;
@@ -34,7 +36,7 @@ public class UsuarioService {
         return usuarioRepository.findByEmpresa(id).stream().map(UsuarioResponseDTO::new).toList();
     }
     public UsuarioResponseDTO findById(Long id){
-        return new UsuarioResponseDTO(usuarioRepository.findById(id).orElseThrow());
+        return new UsuarioResponseDTO(usuarioRepository.findById(id).orElseThrow(UserNotFound::new));
 
     }
     @Transactional
@@ -49,7 +51,7 @@ public class UsuarioService {
     }
     @Transactional
     public void updateUsuario(UsuarioRequestDTO newUsuarioRequestDTO){
-        Usuario usuario = usuarioRepository.findById(newUsuarioRequestDTO.getId()).orElseThrow();
+        Usuario usuario = usuarioRepository.findById(newUsuarioRequestDTO.getId()).orElseThrow(UserNotFound::new);
         usuarioRepository.save(dtoToObject(usuario, newUsuarioRequestDTO));
     }
     public Usuario dtoToObject(Usuario usuario, UsuarioRequestDTO usuarioRequestDTO){
@@ -58,7 +60,7 @@ public class UsuarioService {
         usuario.setName(usuarioRequestDTO.getName());
         usuario.setSenha(usuarioRequestDTO.getSenha());
         usuario.setEmail(usuarioRequestDTO.getEmail());
-        usuario.setEmpresa(empresaRepository.findById(usuarioRequestDTO.getEmpresa_id()).orElseThrow());
+        usuario.setEmpresa(empresaRepository.findById(usuarioRequestDTO.getEmpresa_id()).orElseThrow(EmpresaNotFound::new));
         return usuario;
     }
 

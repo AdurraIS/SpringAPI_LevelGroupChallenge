@@ -1,6 +1,9 @@
 package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.ItemDTO;
+import com.salesunity.systemapp.dto.ItemResponseDTO;
+import com.salesunity.systemapp.exceptions.PedidoNotFound;
+import com.salesunity.systemapp.exceptions.ProdutoNotFound;
 import com.salesunity.systemapp.model.Item;
 import com.salesunity.systemapp.repository.ItemRepository;
 import com.salesunity.systemapp.repository.PedidoRepository;
@@ -22,8 +25,8 @@ public class ItemService {
         this.produtoRepository = produtoRepository;
     }
 
-    public ItemDTO findById(Long id){
-        return new ItemDTO(itemRepository.findById(id).orElseThrow());
+    public ItemResponseDTO findById(Long id){
+        return new ItemResponseDTO(itemRepository.findById(id).orElseThrow());
     }
     @Transactional
     public ItemDTO saveItem(ItemDTO itemDTO){
@@ -41,8 +44,8 @@ public class ItemService {
     }
     public Item dtoToObject(Item item,ItemDTO itemDTO){
         item.setId(itemDTO.getId());
-        item.setPedido(pedidoRepository.findById(itemDTO.getPedido_id()).orElseThrow());
-        item.setProduto(produtoRepository.findById(itemDTO.getProduto_id()).orElseThrow());
+        item.setPedido(pedidoRepository.findById(itemDTO.getPedido_id()).orElseThrow(PedidoNotFound::new));
+        item.setProduto(produtoRepository.findById(itemDTO.getProduto_id()).orElseThrow(ProdutoNotFound::new));
         item.setQuantidade(itemDTO.getQuantidade());
         item.setValorTotal(item.getQuantidade() * item.getProduto().getPrice());
         return item;

@@ -1,6 +1,7 @@
 package com.salesunity.systemapp.service;
 
 import com.salesunity.systemapp.dto.EmpresaDTO;
+import com.salesunity.systemapp.exceptions.EmpresaNotFound;
 import com.salesunity.systemapp.model.Empresa;
 import com.salesunity.systemapp.repository.EmpresaRepository;
 import jakarta.transaction.Transactional;
@@ -25,7 +26,7 @@ public class EmpresaService {
         return empresaRepository.findAll(pageable).map(EmpresaDTO::new);
     }
     public EmpresaDTO findById(Long id){
-        return new EmpresaDTO(empresaRepository.findById(id).orElseThrow());
+        return new EmpresaDTO(empresaRepository.findById(id).orElseThrow(EmpresaNotFound::new));
 
     }
     @Transactional
@@ -39,7 +40,7 @@ public class EmpresaService {
     }
     @Transactional
     public void updateEmpresa(EmpresaDTO empresaDTO){
-        Empresa empresa = empresaRepository.findById(empresaDTO.getId()).orElseThrow();
+        Empresa empresa = empresaRepository.findById(empresaDTO.getId()).orElseThrow(EmpresaNotFound::new);
         empresaRepository.save(dtoToObject(empresa, empresaDTO));
     }
     public Empresa dtoToObject(Empresa empresa, EmpresaDTO empresaDTO){
