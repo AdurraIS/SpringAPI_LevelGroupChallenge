@@ -1,5 +1,6 @@
 package com.salesunity.systemapp.model;
 
+import com.salesunity.systemapp.dto.Usuario.UsuarioRequestDTO;
 import com.salesunity.systemapp.model.roles.UsuarioRoles;
 import jakarta.persistence.*;
 import lombok.*;
