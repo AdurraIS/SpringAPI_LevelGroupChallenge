@@ -13,7 +13,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     @Query("SELECT u FROM Usuario u WHERE u.empresa.id = :empresaId")
     List<Usuario> findByEmpresa(Long empresaId);
-    @Query("SELECT u.name FROM Usuario u WHERE u.email = :email")
-    String findNameByEmail(String email);
     UserDetails findByEmail(String email);
+    Usuario findUsuarioByEmail(String email);
 }

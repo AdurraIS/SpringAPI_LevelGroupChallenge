@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class PedidoController {
 
 
-
+    @Autowired  
     private PedidoService pedidoService;
 
     @GetMapping

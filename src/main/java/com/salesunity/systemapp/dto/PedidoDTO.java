@@ -19,14 +19,14 @@ public class PedidoDTO {
 
     private UsuarioResponseDTO comprador;
 
-    private List<ItemDTO> items;
+    private List<ItemResponseDTO> items;
 
     public PedidoDTO(Pedido pedido) {
         this.id = pedido.getId();
         this.fornecedor = new EmpresaDTO(pedido.getFornecedor());
         this.comprador = new UsuarioResponseDTO(pedido.getComprador());
         if(pedido.getItems() != null){
-            this.items = pedido.getItems().stream().map(ItemDTO::new).toList();
+            this.items = pedido.getItems().stream().map(ItemResponseDTO::new).toList();
         }
         this.concluido = pedido.getConcluido();
     }

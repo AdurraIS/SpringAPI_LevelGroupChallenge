@@ -1,6 +1,7 @@
 package com.salesunity.systemapp.controller;
 
 import com.salesunity.systemapp.dto.ItemDTO;
+import com.salesunity.systemapp.dto.ItemResponseDTO;
 import com.salesunity.systemapp.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,7 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ItemDTO> getItemById(@PathVariable Long id){
+    public ResponseEntity<ItemResponseDTO> getItemById(@PathVariable Long id){
         return ResponseEntity.ok(itemService.findById(id));
     }
 
