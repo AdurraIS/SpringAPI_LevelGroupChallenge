@@ -8,8 +8,8 @@ A equipe SalesUnity esta desenvolvendo uma aplicação web que simplifica o proc
 - Simplificar o processo de solicitação de cotações e compras, oferecendo uma abordagem mais eficaz e ágil para empresas de diversos setores.
 - Gerar impactos financeiros positivos para as empresas, através da automação e simplificação dos processos, resultando em economias operacionais consideráveis, redução da necessidade de mão de obra e agilização do ciclo de compras.
 # Links
-### [Video apresentando Solução]([https://www.youtube.com/watch?v=sWFI0jVEgRk](https://youtu.be/jZaPcI6QYUE))
-### [Link repositório de .NET]([https://github.com/AdurraIS/NETAPI_LevelGroupChallenge])
+### [Video apresentando Solução](https://www.youtube.com/watch?v=sWFI0jVEgRk](https://youtu.be/jZaPcI6QYUE)
+### [Link repositório de .NET](https://github.com/AdurraIS/NETAPI_LevelGroupChallenge)
 ### [Link repositório de React](https://github.com/AdurraIS/reactweb_levelgroupchallenge)
 ## Desenvolvedores:
 | Registro | Nome  | Responsabilidade | Disciplinas|
