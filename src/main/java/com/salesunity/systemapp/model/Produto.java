@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -33,4 +35,7 @@ public class Produto {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<Item> itens;
 }
