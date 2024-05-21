@@ -17,6 +17,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -54,6 +55,8 @@ public class EmpresaService {
             for (UsuarioRequestDTO usuario : empresaDTO.getUsuarios()) {
                 // verifica se o ID do item existe
                     Usuario user = new Usuario();
+                    String encryptedPassword = new BCryptPasswordEncoder().encode(usuario.getSenha());
+                    usuario.setSenha(encryptedPassword);
                     usuario.setEmpresa_id(empresa.getId());
                     usuarioRepository.save(dtoUserToObject(user, usuario));
                     users.add(user);

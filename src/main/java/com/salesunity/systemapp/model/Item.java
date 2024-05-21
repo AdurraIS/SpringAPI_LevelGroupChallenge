@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -17,8 +19,8 @@ public class Item {
     @Column(name = "item_id",nullable = false)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "fk_produto_id", referencedColumnName = "produto_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_produto_id",referencedColumnName = "produto_id")
     private Produto produto;
 
     @Column(name = "item_quantidade",nullable = false)
